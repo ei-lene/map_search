@@ -13,7 +13,11 @@
 
   <div class="field">
     <%= f.label :address %><br />
-    <%= f.text_field :address, :value => "e.g. 1 Times Square", :id => "default_address", :class => "example_text" %>
+    <% if current_page?(new_location_path) %>
+      <%= f.text_field :address, :value => "e.g. 1 Times Square", :id => "default_address", :class => "example_text" %>
+    <% else %>
+      <%= f.text_field :address %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :city %><br />
@@ -28,12 +32,8 @@
     <%= f.text_field :country, :value => "USA" %>
   </div>
   <div class="field">
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>
   </div>
   <div class="actions">
     <%= f.submit %>
