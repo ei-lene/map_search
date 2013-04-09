@@ -1,5 +1,25 @@
 <h1>Listing locations</h1>
 <p id="notice"><%= notice %></p>
+
+<%= form_tag locations_path, :method => :get do %>
+  <%= label_tag :address  %>
+  <%= text_field_tag :address, params[:address] %>
+  
+  <%= label_tag :city  %>
+  <%= text_field_tag :city, params[:city], :placeholder => "New York" %>
+  
+  <%= label_tag :state  %>
+  <%= text_field_tag :state, params[:state], :placeholder => "New York" %>
+  
+  <%= label_tag :country  %>
+  <%= text_field_tag :country, params[:country], :placeholder => "USA" %>
+
+  <%= label_tag :radius  %>
+  <%= text_field_tag :radius, params[:radius] %>
+  <%= submit_tag "Search near", :name => nil %>
+<% end%>
+
+
 <table>
   <tr>
     <th>Address</th>
