@@ -3,12 +3,17 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     # @locations = Location.all
+    # raise params.inspect
     if params[:address].present?
       @search_address = params[:address] +", " + params[:city] +", " + params[:state] +", " + params[:country]
-      @locations = Location.near(@search_address, params[:radius], :order => :distance)
     else
-      @locations = Location.all  
+      # binding.pry
+      @search_address = params[:city] +", " + params[:state] +", " + params[:country]
     end
+
+    # raise params.inspect
+
+    @locations = Location.near(@search_address, params[:radius], :order => :distance)
 
     respond_to do |format|
       format.html # index.html.erb
