@@ -5,10 +5,10 @@
   <h2>Search locations</h2>
   <%= form_tag locations_path, :method => :get do %>
     <%= label_tag :address  %>
-    <%= text_field_tag :address %>
+    <%= text_field_tag :address, @address ||="" %>
     
     <%= label_tag :city  %>
-    <%= text_field_tag :city %>
+    <%= text_field_tag :city, @city ||= "New York" %>
 
     <%= label_tag :radius  %>
     <%= text_field_tag :radius, 10 %>
@@ -17,8 +17,19 @@
   <% end%>
 </div>
 
+<p></p>
+<div> 
+   <%= link_to "Show all locations", root_path %>
+</div>
+<p></p>
+<div class="clear"></div>
+
+
 <div class="location_results">
-  <h2>Search results</h2>
+  <% if @locations.count == Location.all.count %><h2>All locations</h2>
+  <% else %>
+    <h2>Location search results</h2>
+  <% end %>
   <table>
     <tr>
       <th>Address</th>

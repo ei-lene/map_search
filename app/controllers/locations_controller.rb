@@ -4,7 +4,8 @@ class LocationsController < ApplicationController
   def index
     # @locations = Location.all
     # raise params.inspect
-    
+    @address = params[:address]
+    @city = params[:city]
     if params[:city].present? && params[:address].blank?
       @search_location = params[:city]  
       @locations = Location.near(@search_location, params[:radius], :order => :distance)

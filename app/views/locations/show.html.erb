@@ -30,6 +30,9 @@
   <%= @location.longitude %>
 </p>
 
+<p> <b>Location map:</b><br>
+  <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=400x400&sensor=false&markers=#{@location.latitude}%2C#{@location.longitude}" %>
+</p>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>
