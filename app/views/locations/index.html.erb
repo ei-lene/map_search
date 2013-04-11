@@ -1,54 +1,52 @@
 <h1>Listing locations</h1>
 <p id="notice"><%= notice %></p>
 
-<%= form_tag locations_path, :method => :get do %>
-  <%= label_tag :address  %>
-  <%= text_field_tag :address %>
-  
-  <%= label_tag :city  %>
-  <%= text_field_tag :city, "New York"%>
-  
-  <%= label_tag :state  %>
-  <%= text_field_tag :state, "New York" %>
-  
-  <%= label_tag :country  %>
-  <%= text_field_tag :country, "USA" %>
+<div id ="location_search">
+  <h2>Search locations</h2>
+  <%= form_tag locations_path, :method => :get do %>
+    <%= label_tag :address  %>
+    <%= text_field_tag :address %>
+    
+    <%= label_tag :city  %>
+    <%= text_field_tag :city %>
 
-  <%= label_tag :radius  %>
-  <%= text_field_tag :radius, 10 %>
+    <%= label_tag :radius  %>
+    <%= text_field_tag :radius, 10 %>
 
-  <%= submit_tag "Search near", :name => nil %>
-<% end%>
+    <%= submit_tag "Search near", :name => nil %>
+  <% end%>
+</div>
 
+<div class="location_results">
+  <h2>Search results</h2>
+  <table>
+    <tr>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<table>
-  <tr>
-    <th>Address</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Country</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @locations.each do |location| %>
-  <tr>
-    <td><%= location.address %></td>
-    <td><%= location.city %></td>
-    <td><%= location.state %></td>
-    <td><%= location.country %></td>
-    <td><%= location.latitude %></td>
-    <td><%= location.longitude %></td>
-    <td><%= link_to 'Show', location %></td>
-    <td><%= link_to 'Edit', edit_location_path(location) %></td>
-    <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
+  <% @locations.each do |location| %>
+    <tr>
+      <td><%= location.address %></td>
+      <td><%= location.city %></td>
+      <td><%= location.state %></td>
+      <td><%= location.country %></td>
+      <td><%= location.latitude %></td>
+      <td><%= location.longitude %></td>
+      <td><%= link_to 'Show', location %></td>
+      <td><%= link_to 'Edit', edit_location_path(location) %></td>
+      <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
 <br />
 
 <%= link_to 'New Location', new_location_path %>
