@@ -4,12 +4,18 @@ class LocationsController < ApplicationController
   def index
     # @locations = Location.all
     # raise params.inspect
-    if params[:address].nil? && params[:city].nil? && params[:state].nil? && params[:country].nil?
-      @locations = Location.all
-    else
-      @search_location = params[:address] + ", " + params[:city] + ", " +
-      params[:state] + ", " + params[:country] 
+    
+    if params[:city].present? && params[:address].blank?
+      @search_location = params[:city]  
       @locations = Location.near(@search_location, params[:radius], :order => :distance)
+    elsif params[:address].present? && params[:city].blank?
+      @search_location = params[:address]  
+      @locations = Location.near(@search_location, params[:radius], :order => :distance)
+    elsif params[:address].present? && params[:city].present? 
+      @search_location = params[:address] + ", " + params[:city]  
+      @locations = Location.near(@search_location, params[:radius], :order => :distance)
+    else
+      @locations = Location.all
     end
     
     respond_to do |format|
