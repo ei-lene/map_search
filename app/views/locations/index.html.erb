@@ -17,8 +17,19 @@
   <% end%>
 </div>
 
+<p></p>
+<div> 
+   <%= link_to "Show all locations", root_path %>
+</div>
+<p></p>
+<div class="clear"></div>
+
+
 <div class="location_results">
-  <h2>Search results</h2>
+  <% if @locations.count == Location.all.count %><h2>All locations</h2>
+  <% else %>
+    <h2>Location search results</h2>
+  <% end %>
   <table>
     <tr>
       <th>Address</th>
