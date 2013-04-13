@@ -1,3 +1,5 @@
+# Ignore application config & API keys file
+/config/application.yml
 
 #   git config --global core.excludesfile ~/.gitignore_global
 

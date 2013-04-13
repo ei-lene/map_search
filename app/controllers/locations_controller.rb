@@ -1,4 +1,9 @@
 class LocationsController < ApplicationController
+
+  def maps
+    render :maps, :layout => false
+  end
+
   # GET /locations
   # GET /locations.json
   def index
