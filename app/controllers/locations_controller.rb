@@ -1,7 +1,11 @@
 class LocationsController < ApplicationController
 
-  def maps
-    render :maps, :layout => false
+  def map
+    render :map
+  end
+
+  def maps_hello_world
+    render :maps_hello_world, :layout => false
   end
 
   # GET /locations

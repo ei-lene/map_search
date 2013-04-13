@@ -1,5 +1,10 @@
 MapSearch::Application.routes.draw do
-  get 'locations/maps' => 'locations#maps', :as => 'maps'
+  
+  get 'map' => 'locations#map', :as => 'map'
+
+
+  get 'maps_hello_world' => 'locations#maps_hello_world', :as => 'maps_hello_world'
+
   resources :locations
   
   root :to => 'locations#index'
